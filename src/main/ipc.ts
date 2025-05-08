@@ -8,7 +8,7 @@ export const ipcMainEmitter = new IpcEmitter<IpcRendererEvent>()
 
 export function initIpc() {
 	ipcMainHandler.on('changeColor', (event, color: Color) => {
-		console.log('change-color listener in main:', color)
+		console.log('changeColor listener in main:', color)
 		// Broadcast the color change to all renderers
 		ipcMainEmitter.send(
 			event.sender,
@@ -17,8 +17,7 @@ export function initIpc() {
 		)
 	})
 
-	// ipcMainEmitter.send(e.sender, "onColorChange")
-	// ipcMainHandler.handle('on', () => {
-	// 	return 'hello'
-	// })
+	ipcMainHandler.handle('helloFromIPC', () => {
+		console.log('##### Hello from IPC #####')
+	})
 }

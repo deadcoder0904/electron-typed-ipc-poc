@@ -11,6 +11,10 @@ class ShortcutsHelper {
 				ipcMainEmitter.send(mainWin?.webContents, 'sendAlert')
 			}
 		})
+		globalShortcut.register('CommandOrControl+G', () => {
+			console.log('Command/Ctrl + G pressed.')
+			console.log('##### Hello from IPC #####') // invoke ipc function `helloFromIPC()` from here
+		})
 		app.on('will-quit', () => {
 			globalShortcut.unregisterAll()
 		})
