@@ -4,12 +4,13 @@ import { electronApp, is, optimizer } from '@electron-toolkit/utils'
 import { initIpc } from './ipc'
 import { win } from './win'
 import { shortcutsHelper } from './shortcuts'
+import logger from 'electron-timber'
 
 async function createWindow(): Promise<void> {
 	try {
 		await win.createMainWindow()
 	} catch (error) {
-		console.error('Failed to create main window:', error)
+		logger.error('Failed to create main window:', error)
 		app.quit()
 		return
 	}

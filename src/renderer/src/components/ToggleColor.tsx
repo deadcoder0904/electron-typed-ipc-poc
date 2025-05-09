@@ -1,6 +1,7 @@
 import React from 'react'
 import { ipcRendererEmitter } from '../../ipc'
 import { Color } from '../../../types'
+import logger from 'electron-timber'
 
 export const ToggleColor = () => {
 	const [color, setColor] = React.useState<Color>('white')
@@ -16,7 +17,7 @@ export const ToggleColor = () => {
 				cursor: 'pointer',
 			}}
 			onClick={() => {
-				console.log({ color })
+				logger.log({ color })
 				const nextColor = color === 'black' ? 'white' : 'black'
 				setColor(nextColor)
 				ipcRendererEmitter.send('changeColor', nextColor)
