@@ -1,6 +1,6 @@
 import { BrowserWindow } from 'electron'
 
-import { join } from 'path'
+import { join } from 'node:path'
 import icon from '../../resources/icon.png?asset'
 
 class WindowManager {
