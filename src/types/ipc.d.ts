@@ -1,9 +1,9 @@
-import { Color } from '../../types/ipc.ts'
+import { Color } from './index.ts'
 
 // Main process ipc events
 export type IpcEvents = {
-	changeColor: (color: Color) => void // listener event map
-	helloFromIPC: () => void
+	changeColor: [Color] // listener event map
+	helloFromIPC: []
 }
 
 //Renderer ipc events
