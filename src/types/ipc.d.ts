@@ -2,7 +2,7 @@ import { Color } from './index.ts'
 
 // Main process ipc events
 export type IpcEvents = {
-	changeColor: [Color] // listener event map
+	changeColor: [Color]
 	helloFromIPC: []
 }
 

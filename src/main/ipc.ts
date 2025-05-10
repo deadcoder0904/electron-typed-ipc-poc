@@ -1,7 +1,7 @@
 import { IpcEmitter, IpcListener } from '@electron-toolkit/typed-ipc/main'
 import type { IpcEvents, IpcRendererEvent } from '../types/ipc'
 import { Color } from '../types'
-import logger from 'electron-timber'
+import log from 'electron-log'
 
 export const ipcMainHandler = new IpcListener<IpcEvents>()
 
@@ -9,7 +9,7 @@ export const ipcMainEmitter = new IpcEmitter<IpcRendererEvent>()
 
 export function initIpc() {
 	ipcMainHandler.on('changeColor', (event, color: Color) => {
-		logger.log('changeColor listener in main:', color)
+		log.info('changeColor listener in main:', color)
 		// Broadcast the color change to all renderers
 		ipcMainEmitter.send(
 			event.sender,
@@ -18,7 +18,7 @@ export function initIpc() {
 		)
 	})
 
-	ipcMainHandler.handle('helloFromIPC', () => {
-		logger.log('##### Hello from IPC #####')
+	ipcMainHandler.on('helloFromIPC', () => {
+		log.info('##### Hello from IPC #####')
 	})
 }
